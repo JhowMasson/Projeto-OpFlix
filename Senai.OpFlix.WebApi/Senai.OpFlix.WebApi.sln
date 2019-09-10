@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Senai.OpFlix.WebApi", "Senai.OpFlix.WebApi\Senai.OpFlix.WebApi.csproj", "{9B91B002-8874-4B39-8563-D5A2C5C703F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B91B002-8874-4B39-8563-D5A2C5C703F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B91B002-8874-4B39-8563-D5A2C5C703F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B91B002-8874-4B39-8563-D5A2C5C703F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B91B002-8874-4B39-8563-D5A2C5C703F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {740D3D36-42AB-4726-B25E-49DC07C7861A}
+	EndGlobalSection
+EndGlobal
