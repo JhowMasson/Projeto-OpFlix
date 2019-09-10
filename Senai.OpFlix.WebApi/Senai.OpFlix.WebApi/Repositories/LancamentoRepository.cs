@@ -24,5 +24,24 @@ namespace Senai.OpFlix.WebApi.Repositories
                 ctx.SaveChanges();
             }
         }
+
+        public LancamentoDomain BuscarPorId(int id)
+        {
+            using (OpFlixContext ctx = new OpFlixContext())
+            {
+                return ctx.Lancamento.FirstOrDefault(x => x.IdLancamento == id);
+            }
+        }
+
+        public void Alterar(LancamentoDomain lancamento)
+        {
+            using (OpFlixContext ctx = new OpFlixContext())
+            {
+                LancamentoDomain LancamentoPesquisado = ctx.Lancamento.FirstOrDefault(X => X.IdLancamento == lancamento.IdLancamento);
+                LancamentoPesquisado.Nome = lancamento.Nome;
+                ctx.Lancamento.Update(LancamentoPesquisado);
+                ctx.SaveChanges();
+            }
+        }
     }
 }

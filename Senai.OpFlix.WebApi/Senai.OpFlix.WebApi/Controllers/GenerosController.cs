@@ -15,7 +15,7 @@ namespace Senai.OpFlix.WebApi.Controllers
     public class GenerosController : ControllerBase
     {
         GeneroRepository GeneroRepository = new GeneroRepository();
-        
+
         [HttpGet]
         public IActionResult Listar()
         {
@@ -26,6 +26,16 @@ namespace Senai.OpFlix.WebApi.Controllers
         public IActionResult Cadastrar(GeneroDomain genero)
         {
             GeneroRepository.Cadastrar(genero);
+            return Ok();
+        }
+
+        [HttpPut("id")]
+        public IActionResult Alterar(GeneroDomain genero)
+        {
+            GeneroDomain generoBuscado = GeneroRepository.BuscarPorId(genero.IdGenero);
+            if (generoBuscado == null)
+                return NotFound();
+            GeneroRepository.Alterar(genero);
             return Ok();
         }
     }

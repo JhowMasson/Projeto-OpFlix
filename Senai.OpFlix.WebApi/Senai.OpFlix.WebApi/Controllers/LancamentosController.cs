@@ -28,5 +28,15 @@ namespace Senai.OpFlix.WebApi.Controllers
             LancamentoRepository.Cadastrar(lancamento);
             return Ok();
         }
+
+        [HttpPut("id")]
+        public IActionResult Alterar(LancamentoDomain lancamento)
+        {
+            LancamentoDomain lancamentoBuscado = LancamentoRepository.BuscarPorId(lancamento.IdLancamento);
+            if (lancamentoBuscado == null)
+                return NotFound();
+            LancamentoRepository.Alterar(lancamento);
+            return Ok();
+        }
     }
 }

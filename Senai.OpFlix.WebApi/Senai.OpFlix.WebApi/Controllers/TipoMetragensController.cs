@@ -27,5 +27,15 @@ namespace Senai.OpFlix.WebApi.Controllers
             TipoMetragemRepository.Cadastrar(tipoMetregem);
             return Ok();
         }
+
+        [HttpPut("id")]
+        public IActionResult Alterar(TipoMetragemDomain tipoMetragem)
+        {
+            TipoMetragemDomain tipoMetragemBuscado = TipoMetragemRepository.BuscarPorId(tipoMetragem.IdTipoMetragem);
+            if (tipoMetragemBuscado == null)
+                return NotFound();
+            TipoMetragemRepository.Alterar(tipoMetragem);
+            return Ok();
+        }
     }
 }

@@ -26,6 +26,24 @@ namespace Senai.OpFlix.WebApi.Repositories
                 ctx.SaveChanges();
             }
         }
-        
+
+        public GeneroDomain BuscarPorId(int id)
+        {
+            using (OpFlixContext ctx = new OpFlixContext())
+            {
+                return ctx.Genero.FirstOrDefault(x => x.IdGenero == id);
+            }
+        }
+
+        public void Alterar(GeneroDomain genero)
+        {
+            using(OpFlixContext ctx = new OpFlixContext())
+            {
+                GeneroDomain GeneroPesquisado = ctx.Genero.FirstOrDefault(x => x.IdGenero == genero.IdGenero);
+                GeneroPesquisado.Nome = genero.Nome;
+                ctx.Genero.Update(GeneroPesquisado);
+                ctx.SaveChanges();
+            }
+        }
     }
 }
