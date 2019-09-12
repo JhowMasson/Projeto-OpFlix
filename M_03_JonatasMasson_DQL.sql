@@ -44,7 +44,54 @@ Update Genero
 Set Nome = 'Romance'
 Where Nome = 'Terror';
 
+DELETE From LancamentoFavorito
+Where IdLancamento = 2;
 
---FAZER O DELETE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

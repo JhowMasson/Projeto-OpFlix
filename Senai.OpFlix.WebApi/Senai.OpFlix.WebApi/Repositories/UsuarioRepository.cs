@@ -46,5 +46,7 @@ namespace Senai.OpFlix.WebApi.Repositories
 
         }
 
+        //TODO - FAZER O BuscarPorEmailESenha
+
     }
 }

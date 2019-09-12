@@ -38,5 +38,12 @@ namespace Senai.OpFlix.WebApi.Controllers
             LancamentoRepository.Alterar(lancamento);
             return Ok();
         }
+
+        [HttpDelete("id")]
+        public IActionResult Deletar(int id)
+        {
+            LancamentoRepository.Deletar(id);
+            return Ok();
+        }
     }
 }
