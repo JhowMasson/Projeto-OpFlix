@@ -29,7 +29,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok();
         }
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public IActionResult Alterar(LancamentoDomain lancamento)
         {
             LancamentoDomain lancamentoBuscado = LancamentoRepository.BuscarPorId(lancamento.IdLancamento);
@@ -39,7 +39,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok();
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
             LancamentoRepository.Deletar(id);

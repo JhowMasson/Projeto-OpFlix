@@ -29,7 +29,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok();
         }
 
-        [HttpPut("id")]
+        [HttpPut]
         public IActionResult Alterar(UsuarioDomain usuario)
         {
             UsuarioDomain usuarioBuscado = UsuarioRepository.BuscarPorId(usuario.IdUsuario);
@@ -39,5 +39,12 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok();
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Deletar(int id)
+        {
+            UsuarioRepository.Deletar(id);
+            return Ok();
+        }
     }
+
 }

@@ -29,7 +29,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok();
         }
 
-        [HttpPut("id")]
+        [HttpPut]
         public IActionResult Alterar(GeneroDomain genero)
         {
             GeneroDomain generoBuscado = GeneroRepository.BuscarPorId(genero.IdGenero);
@@ -38,5 +38,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             GeneroRepository.Alterar(genero);
             return Ok();
         }
+
+        // TODO - FAZER O DELETE DOS GENEROS 
     }
 }

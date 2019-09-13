@@ -12,12 +12,12 @@ namespace Senai.OpFlix.WebApi.Repositories
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
-                // LISTA TODAS OS LANCAMENTOS (SELECT * FROM LANCAMENTOS)
+                // LISTA TODOS OS LANCAMENTOS (SELECT * FROM LANCAMENTOS)
                 return ctx.Lancamento.ToList();
             }
         }
 
-        //CADASTRA NOVOS LANCAMENTOS
+        // CADASTRA NOVOS LANCAMENTOS
         public void Cadastrar(LancamentoDomain lancamento)
         {
             using (OpFlixContext ctx = new OpFlixContext())
@@ -28,17 +28,17 @@ namespace Senai.OpFlix.WebApi.Repositories
             }
         }
 
-        //BUSCA O LANCAMENTO PELO ID 
+        // BUSCA O LANCAMENTO PELO ID 
         public LancamentoDomain BuscarPorId(int id)
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
-                // IRÁ RETORNAR O VALOR, SE O ID QUE O USUÁRIO ENVIOU FOR IGUAL AO QUE ESTA NA TABELA
+                // IRÁ RETORNAR O VALOR, SE O ID QUE O USUARIO ENVIOU FOR IGUAL AO QUE ESTA NA TABELA
                 return ctx.Lancamento.FirstOrDefault(x => x.IdLancamento == id);
             }
         }
 
-        //ATUALIZAR
+        // SERVE PARA ALTERAR/ATUALIZAR UM LANCAMENTO
         public void Alterar(LancamentoDomain lancamento)
         {
             using (OpFlixContext ctx = new OpFlixContext())
@@ -50,13 +50,13 @@ namespace Senai.OpFlix.WebApi.Repositories
             }
         }
 
-        //DELETAR
+        // SERVE PARA DELETAR UM LANCAMENTO
         public void Deletar(int id)
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
-                LancamentoDomain LancamentoBuscado = ctx.Lancamento.Find(id);
-                ctx.Lancamento.Remove(LancamentoBuscado);
+                LancamentoDomain Lancamento = ctx.Lancamento.Find(id);
+                ctx.Lancamento.Remove(Lancamento);
                 ctx.SaveChanges();
             }
         }

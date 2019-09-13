@@ -29,26 +29,35 @@ namespace Senai.OpFlix.WebApi.Controllers
                 if (Usuario == null)
                     return NotFound(new { mensagem = "Email e senha inválidos." });
 
+                // SÃO AS INFORMAÇÕES DO USUARIO
                 var claims = new[]
                 {
-                    //EMAIL
+                    // EMAIL DO USUARIO
                     new Claim(JwtRegisteredClaimNames.Email, Usuario.Email),
-                    //ID
+                    // ID DO USUARIO
                     new Claim(JwtRegisteredClaimNames.Jti,
                     Usuario.IdUsuario.ToString()),
-                    // ESSA É A PERMISSÃO DO USUÁRIO
+                    // ESSA É O TIPO DO USUÁRIO
                     new Claim(ClaimTypes.Role, Usuario.IdTipoUsuario.ToString()),
                 };
 
+                // ESSA CHAVE ESTA CONFIGURADA NO STARTUP
                 var key = new SymmetricSecurityKey
                     (System.Text.Encoding.UTF8.GetBytes("opflix-chave-autenticacao"));
+                // CRIPTOGRAFIA
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
                 var token = new JwtSecurityToken(
+                    // QUEM ESTA MANDANDO E QUEM ESTA VALIDANDO
                     issuer: "OpFlix.WebApi",
                     audience: "OpFlix.WebApi",
+                    // ESSA É A DATA DE EXPIRAÇÃO
                     claims: claims, expires: DateTime.Now.AddDays(30),
+                    // ESSA É A CHAVE
                     signingCredentials: creds);
 
+
+                // SERVE PARA GERAR AS CHAVES
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token)

@@ -12,7 +12,7 @@ namespace Senai.OpFlix.WebApi
 {
     public class Startup
     {
-        // TODO - 
+       
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc()
