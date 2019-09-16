@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai.OpFlix.WebApi.Domains;
@@ -16,12 +17,14 @@ namespace Senai.OpFlix.WebApi.Controllers
     {
         LancamentoRepository LancamentoRepository = new LancamentoRepository();
 
+        
         [HttpGet]
         public IActionResult Listar()
         {
             return Ok(LancamentoRepository.Listar());
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public IActionResult Cadastrar(LancamentoDomain lancamento)
         {
@@ -29,7 +32,8 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok();
         }
 
-        [HttpPut("{id}")]
+        [Authorize(Roles = "Administrador")]
+        [HttpPut]
         public IActionResult Alterar(LancamentoDomain lancamento)
         {
             LancamentoDomain lancamentoBuscado = LancamentoRepository.BuscarPorId(lancamento.IdLancamento);
@@ -39,6 +43,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok();
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {

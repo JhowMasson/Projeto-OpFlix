@@ -1,4 +1,5 @@
-﻿using Senai.OpFlix.WebApi.Domains;
+﻿using Microsoft.EntityFrameworkCore;
+using Senai.OpFlix.WebApi.Domains;
 using Senai.OpFlix.WebApi.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,15 @@ namespace Senai.OpFlix.WebApi.Repositories
 {
     public class UsuarioRepository
     {
+        /// <summary>
+        /// Lista os Usuarios
+        /// </summary>
+        /// <returns></returns>
         public List<UsuarioDomain> Listar()
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
-                // LISTA TODOS OS USUARIOS (SELECT * FROM USUARIOS)
+                // LISTA TODOS OS USUARIOS
                 return ctx.Usuario.ToList();
             }
         }
@@ -36,6 +41,8 @@ namespace Senai.OpFlix.WebApi.Repositories
 
         }
 
+
+        // TODO - ADCIONAR AS OUTRAS PROPRIEDADES PARA FAZER A ALTERAÇÃO NO POSTMAN
         // SERVE PARA ALTERAR/ATUALIZAR UM USUARIO
         public void Alterar(UsuarioDomain usuario)
         {
@@ -57,7 +64,7 @@ namespace Senai.OpFlix.WebApi.Repositories
             using (OpFlixContext ctx = new OpFlixContext())
             {
                 // IRÁ BUSCAR OS DADOS RECEBIDOS E VER SE O EMAIL E A SENHA SÃO IGUAIS
-                UsuarioDomain UsuarioBuscado = ctx.Usuario.FirstOrDefault(x => x.Email == login.Email && x.Senha == login.Senha);
+                UsuarioDomain UsuarioBuscado = ctx.Usuario.Include(x => x.IdTipoUsuarioNavigation).FirstOrDefault(x => x.Email == login.Email && x.Senha == login.Senha);
                 if (UsuarioBuscado == null)
                 {
                     return null;
@@ -66,7 +73,7 @@ namespace Senai.OpFlix.WebApi.Repositories
             }
         }
 
-        //SERVE PARA DELETAR UM USUARIO
+        // SERVE PARA DELETAR UM USUARIO
         public void Deletar(int id)
         {
             using (OpFlixContext ctx = new OpFlixContext())
@@ -76,6 +83,9 @@ namespace Senai.OpFlix.WebApi.Repositories
                 ctx.SaveChanges();
             }
         }
+
+        
+
 
     }
 }

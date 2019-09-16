@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai.OpFlix.WebApi.Domains;
@@ -16,6 +17,7 @@ namespace Senai.OpFlix.WebApi.Controllers
     {
         TipoUsuarioRepository TipoUsuarioRepository = new TipoUsuarioRepository();
 
+        [Authorize(Roles = "Administrador")]
         [HttpGet]
         public IActionResult Listar()
         {
@@ -29,6 +31,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok();
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPut("id")]
         public IActionResult Alterar(TipoUsuarioDomain tipoUsuario)
         {

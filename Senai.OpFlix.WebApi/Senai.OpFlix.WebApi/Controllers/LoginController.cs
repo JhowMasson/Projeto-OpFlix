@@ -37,8 +37,8 @@ namespace Senai.OpFlix.WebApi.Controllers
                     // ID DO USUARIO
                     new Claim(JwtRegisteredClaimNames.Jti,
                     Usuario.IdUsuario.ToString()),
-                    // ESSA É O TIPO DO USUÁRIO
-                    new Claim(ClaimTypes.Role, Usuario.IdTipoUsuario.ToString()),
+                    // ESSE É O TIPO DO USUÁRIO
+                    new Claim(ClaimTypes.Role, Usuario.IdTipoUsuarioNavigation.Nome),
                 };
 
                 // ESSA CHAVE ESTA CONFIGURADA NO STARTUP
