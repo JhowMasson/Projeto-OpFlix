@@ -19,7 +19,7 @@ create table Lancamento(
 	,Nome Varchar(255) not null unique
 	,TempoDuracao Time  
 	,DataLancamento Date 
-	,Sinopse varchar(1500) not null unique
+	,Sinopse varchar(1700) not null unique
 	,IdGenero int foreign key references Genero (IdGenero)
 	,IdTipoMetragem int foreign key references TipoMetragem (IdTipoMetragem)
 );

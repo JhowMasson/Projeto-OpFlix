@@ -45,6 +45,9 @@ namespace Senai.OpFlix.WebApi.Repositories
             {
                 LancamentoDomain LancamentoPesquisado = ctx.Lancamento.FirstOrDefault(X => X.IdLancamento == lancamento.IdLancamento);
                 LancamentoPesquisado.Nome = lancamento.Nome;
+                LancamentoPesquisado.Sinopse = lancamento.Sinopse;
+                LancamentoPesquisado.TempoDuracao = lancamento.TempoDuracao;
+                LancamentoPesquisado.DataLancamento = lancamento.DataLancamento;
                 ctx.Lancamento.Update(LancamentoPesquisado);
                 ctx.SaveChanges();
             }

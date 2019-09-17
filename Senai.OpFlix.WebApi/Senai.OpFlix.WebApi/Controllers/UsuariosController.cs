@@ -23,12 +23,29 @@ namespace Senai.OpFlix.WebApi.Controllers
         {
             return Ok(UsuarioRepository.Listar());
         }
-
+        /// <summary>
+        /// VAI SERVIR PARA CRIAR UM MÉTODO ONDE APENAS O ADMINISTRADOR PODERÁ CADASTRAR OUTRO ADMINISTRADOR
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>    
         [HttpPost]
         public IActionResult Cadastrar(UsuarioDomain usuario)
         {
-            UsuarioRepository.Cadastrar(usuario);
-            return Ok();
+            try
+            {
+                if(usuario.IdTipoUsuario == 1)
+                {
+                    return BadRequest(new { mensagem = "Erro: Usuário comum não pode cadastrar um Administrador"});
+                }
+                UsuarioRepository.Cadastrar(usuario);
+                return Ok();
+            }
+                
+         
+            catch (Exception ex)
+            {
+                return BadRequest(new { mensagem = "Erro: " + ex.Message });
+            }
         }
 
         [Authorize(Roles = "Administrador")]
@@ -48,7 +65,7 @@ namespace Senai.OpFlix.WebApi.Controllers
         {
             UsuarioRepository.Deletar(id);
             return Ok();
-        }
-    }
+        }       
 
+    }
 }

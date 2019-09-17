@@ -31,6 +31,16 @@ namespace Senai.OpFlix.WebApi.Repositories
                 ctx.SaveChanges();
             }
         }
+
+        public void CadastrarAdmin(UsuarioDomain usuario)
+        {
+            using (OpFlixContext ctx = new OpFlixContext())
+            {
+                ctx.Usuario.Add(usuario);
+                ctx.SaveChanges();
+            }
+        }
+
         // BUSCA OS USUARIOS PELO ID 
         public UsuarioDomain BuscarPorId(int id)
         {
@@ -41,8 +51,6 @@ namespace Senai.OpFlix.WebApi.Repositories
 
         }
 
-
-        // TODO - ADCIONAR AS OUTRAS PROPRIEDADES PARA FAZER A ALTERAÇÃO NO POSTMAN
         // SERVE PARA ALTERAR/ATUALIZAR UM USUARIO
         public void Alterar(UsuarioDomain usuario)
         {
@@ -50,13 +58,13 @@ namespace Senai.OpFlix.WebApi.Repositories
             {
                 UsuarioDomain UsuarioPesquisado = ctx.Usuario.FirstOrDefault(x => x.IdUsuario == usuario.IdUsuario);
                 UsuarioPesquisado.Nome = usuario.Nome;
+                UsuarioPesquisado.Senha = usuario.Senha;
+                UsuarioPesquisado.Email = usuario.Email;
                 ctx.Usuario.Update(UsuarioPesquisado);
                 ctx.SaveChanges();
             }
 
         }
-
-        //TODO - FAZER O BuscarPorEmailESenha
 
         // IRÁ BUSCAR O USUARIO PELO SEU EMAIL E SUA SENHA
         public UsuarioDomain BuscarPorEmailESenha(LoginViewModel login)
@@ -83,9 +91,6 @@ namespace Senai.OpFlix.WebApi.Repositories
                 ctx.SaveChanges();
             }
         }
-
-        
-
 
     }
 }
