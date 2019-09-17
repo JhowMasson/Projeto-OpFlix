@@ -18,6 +18,7 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpPost]
+        // O POST SERVE PARA CADASTRAR UM NOVO ITEM 
         public IActionResult Cadastrar(UsuarioDomain usuario)
         {
             try

@@ -19,6 +19,7 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpGet]
+        // O GET SERVE PARA LISTAR OS RESULTADOS
         public IActionResult Listar()
         {
             return Ok(UsuarioRepository.Listar());
@@ -29,6 +30,7 @@ namespace Senai.OpFlix.WebApi.Controllers
         /// <param name="usuario"></param>
         /// <returns></returns>    
         [HttpPost]
+        // O POST SERVE PARA CADASTRAR UM NOVO ITEM 
         public IActionResult Cadastrar(UsuarioDomain usuario)
         {
             try
@@ -39,9 +41,8 @@ namespace Senai.OpFlix.WebApi.Controllers
                 }
                 UsuarioRepository.Cadastrar(usuario);
                 return Ok();
-            }
-                
-         
+            }               
+            
             catch (Exception ex)
             {
                 return BadRequest(new { mensagem = "Erro: " + ex.Message });
@@ -50,6 +51,7 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpPut]
+        // O PUT SERVE PARA ALTERAR/ATUALIZAR UM NOVO ITEM
         public IActionResult Alterar(UsuarioDomain usuario)
         {
             UsuarioDomain usuarioBuscado = UsuarioRepository.BuscarPorId(usuario.IdUsuario);
@@ -61,11 +63,11 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
+        // O DELETE SERVE PARA DELETAR UM ITEM 
         public IActionResult Deletar(int id)
         {
             UsuarioRepository.Deletar(id);
             return Ok();
         }       
-
     }
 }

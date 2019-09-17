@@ -19,12 +19,14 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpGet]
+        // O GET SERVE PARA LISTAR OS RESULTADOS
         public IActionResult Listar()
         {
             return Ok(TipoUsuarioRepository.Listar());
         }
 
         [HttpPost]
+        // O POST SERVE PARA CADASTRAR UM NOVO ITEM 
         public IActionResult Cadastrar(TipoUsuarioDomain tipoUsuario)
         {
             TipoUsuarioRepository.Cadastrar(tipoUsuario);
@@ -33,6 +35,7 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpPut("id")]
+        // O PUT SERVE PARA ALTERAR/ATUALIZAR UM NOVO ITEM
         public IActionResult Alterar(TipoUsuarioDomain tipoUsuario)
         {
             TipoUsuarioDomain tipoUsuarioBuscado = TipoUsuarioRepository.BuscarPorId(tipoUsuario.IdTipoUsuario);

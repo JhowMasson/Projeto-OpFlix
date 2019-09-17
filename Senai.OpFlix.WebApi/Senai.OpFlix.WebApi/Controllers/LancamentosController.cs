@@ -16,9 +16,9 @@ namespace Senai.OpFlix.WebApi.Controllers
     public class LancamentosController : ControllerBase
     {
         LancamentoRepository LancamentoRepository = new LancamentoRepository();
-
-        
+      
         [HttpGet]
+        // O GET SERVE PARA LISTAR OS RESULTADOS
         public IActionResult Listar()
         {
             return Ok(LancamentoRepository.Listar());
@@ -26,6 +26,7 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpPost]
+        // O POST SERVE PARA CADASTRAR UM NOVO ITEM 
         public IActionResult Cadastrar(LancamentoDomain lancamento)
         {
             LancamentoRepository.Cadastrar(lancamento);
@@ -34,6 +35,7 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpPut]
+        // O PUT SERVE PARA ALTERAR/ATUALIZAR UM NOVO ITEM
         public IActionResult Alterar(LancamentoDomain lancamento)
         {
             LancamentoDomain lancamentoBuscado = LancamentoRepository.BuscarPorId(lancamento.IdLancamento);
@@ -45,6 +47,7 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
+        // O DELETE SERVE PARA DELETAR UM ITEM 
         public IActionResult Deletar(int id)
         {
             LancamentoRepository.Deletar(id);

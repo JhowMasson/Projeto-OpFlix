@@ -21,6 +21,7 @@ namespace Senai.OpFlix.WebApi.Controllers
         UsuarioRepository UsuarioRepository = new UsuarioRepository();
 
         [HttpPost]
+        // O POST SERVE PARA CADASTRAR UM NOVO ITEM 
         public IActionResult Login (LoginViewModel login)
         {
             try
@@ -46,7 +47,6 @@ namespace Senai.OpFlix.WebApi.Controllers
                     (System.Text.Encoding.UTF8.GetBytes("opflix-chave-autenticacao"));
                 // CRIPTOGRAFIA
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
                 var token = new JwtSecurityToken(
                     // QUEM ESTA MANDANDO E QUEM ESTA VALIDANDO
                     issuer: "OpFlix.WebApi",
@@ -56,13 +56,11 @@ namespace Senai.OpFlix.WebApi.Controllers
                     // ESSA É A CHAVE
                     signingCredentials: creds);
 
-
                 // SERVE PARA GERAR AS CHAVES
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token)
                 });
-
             }
             catch (Exception ex)
             {

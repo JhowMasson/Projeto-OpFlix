@@ -18,6 +18,7 @@ namespace Senai.OpFlix.WebApi.Controllers
         GeneroRepository GeneroRepository = new GeneroRepository();
 
         [HttpGet]
+        // O GET SERVE PARA LISTAR OS RESULTADOS
         public IActionResult Listar()
         {
             return Ok(GeneroRepository.Listar());
@@ -25,6 +26,7 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpPost]
+        // O POST SERVE PARA CADASTRAR UM NOVO ITEM 
         public IActionResult Cadastrar(GeneroDomain genero)
         {
             GeneroRepository.Cadastrar(genero);
@@ -33,6 +35,7 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpPut]
+        // O PUT SERVE PARA ALTERAR/ATUALIZAR UM NOVO ITEM
         public IActionResult Alterar(GeneroDomain genero)
         {
             GeneroDomain generoBuscado = GeneroRepository.BuscarPorId(genero.IdGenero);
@@ -42,9 +45,9 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok();
         }
 
-        // TODO - FAZER O DELETE DOS GENEROS
         [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
+        // O DELETE SERVE PARA DELETAR UM ITEM 
         public IActionResult Deletar(int id)
         {
             GeneroRepository.Deletar(id);

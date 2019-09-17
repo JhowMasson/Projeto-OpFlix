@@ -16,6 +16,7 @@ namespace Senai.OpFlix.WebApi.Controllers
         TipoMetragemRepository TipoMetragemRepository = new TipoMetragemRepository();
 
         [HttpGet]
+        // O GET SERVE PARA LISTAR OS RESULTADOS
         public IActionResult Listar()
         {
             return Ok(TipoMetragemRepository.Listar());
