@@ -16,7 +16,7 @@ import {
 
 class SignIn extends Component {
     static navigationOptions= {
-        hearder: null,
+        header: null,
     };
 
     constructor() {
@@ -57,7 +57,7 @@ class SignIn extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('../assets/img/FundoMobile.jpg')} style={{width: '100%', height: '100%',}}>
+            <ImageBackground source={require('../assets/img/FundoMobile.jpg')} style={{width: '100%', height: '100%', opacity: 0.9}}>
 
             <View style ={styles.body}>
                 
@@ -78,13 +78,9 @@ class SignIn extends Component {
             />
             <TouchableOpacity onPress={this._realizarLogin}>
                 <Text style={styles.btnLogin}>Entre</Text>
-                <Text>Ou</Text>
-                <Text style={styles.btnLogin}>Cadastre-se</Text>
             </TouchableOpacity>
-
-            
-                
-            
+                <Text style={styles.Ow}>Ou</Text>
+                <Text style={styles.btnLogin}>Cadastre-se</Text>
             </View>
             </ImageBackground>
         );
@@ -95,16 +91,16 @@ const styles = StyleSheet.create({
   
   
     body: {
-      flex: 1,
+      // flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
       marginTop: 50,
       
     },
     imgOpflix: {
-      marginTop: 0,
-      width: 160,
-      height: 85,
+      // marginTop: 0,
+      width: 164,
+      height: 80,
     },
     ItensLogin: {
       flex: 1,
@@ -127,16 +123,17 @@ const styles = StyleSheet.create({
       width: 162,
       height: 30,
       fontSize: 20,
-      marginTop: 35,
+      marginTop: 30,
+      marginBottom: 10,
       borderRadius: 10,
       color: '#fff',
       backgroundColor: '#DB202C',
     },
-    // btnCad: {
-    //   marginTop: 20,
-    //   fontSize: 20,
-    //   color: '#fff',
-    // },
+    Ow:{
+      justifyContent: 'center',
+      fontSize: 30,
+      color: 'white',
+    }
   });
 
 export default SignIn;

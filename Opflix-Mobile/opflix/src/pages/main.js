@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Image, StyleSheet, AsyncStorage } from 'react-native';
+import {Text, View, Image, StyleSheet, AsyncStorage, ImageBackground,} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -44,12 +44,13 @@ class Main extends Component {
 
   render() {
         return (
+          <ImageBackground source={require('../assets/img/FundoMobile2.png')} style={{width: '100%', height: '100%',  opacity: 0.8,}}>
 
-    <View style={styles.body}>
+      <View style={styles.fundoDaTela}>
         <FlatList data={this.state.lancamentos}
           keyExtractor={item => item.idLancamento}
           renderItem={({item}) => (
-        <View>
+            <View>
             <Text style={styles.listaFilmes}>{item.nome}</Text>
             
             <Text style={styles.dadosListaFilmes}>{item.sinopse}</Text>
@@ -65,15 +66,16 @@ class Main extends Component {
             
             </View>          
           )}
-        />
-      </View>          
+          />
+        </View>
+      </ImageBackground>        
     );
   }
 }
 const styles = StyleSheet.create({
   tabBarNavigatorIcon: { width: 35, height: 35, tintColor: 'white' },
 
-  body:{
+  fundoDaTela:{
     backgroundColor: Colors.black,
 },
 

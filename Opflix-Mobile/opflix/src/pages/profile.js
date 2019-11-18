@@ -6,8 +6,8 @@ class Profile extends Component {
     static navigationOptions = {
         tabBarIcon: () => (
           <Image
-            source={require('../assets/img/imagemCasa.png')}
-            style={styles.tabBarNavigatorIcon}
+            source={require('../assets/img/iconePerfil.png')}
+            style={styles.IconeNav}
           />
         )
       }
@@ -43,7 +43,8 @@ class Profile extends Component {
 }
 
     const styles = StyleSheet.create({
-        tabBarNavigatorIcon: { width: 35, height: 35, tintColor: 'white' }
+        IconeNav: { width: 35, height: 35, tintColor: 'white' }
     });
+    
 
 export default Profile;
