@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, AsyncStorage,Image, StyleSheet , View} from 'react-native'
+import {Text, View, Image, StyleSheet, AsyncStorage, ImageBackground,} from 'react-native'
 
 class Profile extends Component {
 
@@ -7,7 +7,7 @@ class Profile extends Component {
         tabBarIcon: () => (
           <Image
             source={require('../assets/img/iconePerfil.png')}
-            style={styles.IconeNav}
+            style={styles.IconePessoa}
           />
         )
       }
@@ -26,25 +26,29 @@ class Profile extends Component {
     
       _buscarDadosDoStorage = async () => {
         try {
-          const tokenDoStorage = await AsyncStorage.getItem('@opflix:token');
-          if (tokenDoStorage != null) {
-            this.setState({token: tokenDoStorage});
+          const tokenStorage = await AsyncStorage.getItem('@opflix:token');
+          if (tokenStorage != null) {
+            this.setState({token: tokenStorage});
           }
         } catch (error) {}
       };
     
       render() {
         return (
-          <View>
-            <Text>{this.state.token}</Text>
-          </View>
+          <ImageBackground source={require('../assets/img/fundomobiletres.jpg')} style={{width: '100%', height: '100%', backgroundColor: 'rgba(0, 0, 0, 0.2'}}>
+            <View>
+              <Text style={styles.aporradoitem}>{this.state.token}</Text>
+            </View>
+          </ImageBackground>
         );
     }
 }
 
-    const styles = StyleSheet.create({
-        IconeNav: { width: 35, height: 35, tintColor: 'white' }
-    });
+  const styles = StyleSheet.create({
+    IconePessoa: { width: 35, height: 35, tintColor: 'white' },
+    aporradoitem: {fontSize: 20, color: '#FFF'}
+  
+  });
     
 
 export default Profile;

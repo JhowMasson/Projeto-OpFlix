@@ -44,7 +44,7 @@ class Main extends Component {
 
   render() {
         return (
-          <ImageBackground source={require('../assets/img/FundoMobile2.png')} style={{width: '100%', height: '100%',  opacity: 0.8,}}>
+          <ImageBackground source={require('../assets/img/FundoMobile2.png')} style={{width: '100%', height: '100%',  opacity: 0.88 }}>
 
       <View style={styles.fundoDaTela}>
         <FlatList data={this.state.lancamentos}

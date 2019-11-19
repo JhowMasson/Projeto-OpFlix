@@ -57,9 +57,9 @@ class SignIn extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('../assets/img/FundoMobile.jpg')} style={{width: '100%', height: '100%', opacity: 0.9}}>
+            <ImageBackground source={require('../assets/img/got.jpg')} style={{width: '100%', height: '100%', opacity: 1}}>
 
-            <View style ={styles.body}>
+            <View style ={styles.FundoDeTela}>
                 
 
                 <Image source={require('../assets/img/imagem-opflix.png')}style={styles.imgOpflix}/>
@@ -77,10 +77,10 @@ class SignIn extends Component {
             value={this.state.senha}
             />
             <TouchableOpacity onPress={this._realizarLogin}>
-                <Text style={styles.btnLogin}>Entre</Text>
+                <Text style={styles.botaoLogin}>Entre</Text>
             </TouchableOpacity>
                 <Text style={styles.Ow}>Ou</Text>
-                <Text style={styles.btnLogin}>Cadastre-se</Text>
+                <Text style={styles.botaoCadastrese}>Cadastre-se</Text>
             </View>
             </ImageBackground>
         );
@@ -90,7 +90,7 @@ class SignIn extends Component {
 const styles = StyleSheet.create({
   
   
-    body: {
+    FundoDeTela: {
       // flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
@@ -99,8 +99,8 @@ const styles = StyleSheet.create({
     },
     imgOpflix: {
       // marginTop: 0,
-      width: 164,
-      height: 80,
+      width: 280,
+      height: 130,
     },
     ItensLogin: {
       flex: 1,
@@ -118,12 +118,23 @@ const styles = StyleSheet.create({
       borderRadius: 10,
       backgroundColor: '#fff',
     },
-    btnLogin:{
+    botaoLogin:{
+      textAlign: "center",
+      width: 110,
+      height: 30,
+      fontSize: 20,
+      marginTop: 35,
+      marginBottom: 5,
+      borderRadius: 8,
+      color: '#fff',
+      backgroundColor: '#DB202C',
+    },
+    botaoCadastrese:{
       textAlign: "center",
       width: 162,
       height: 30,
       fontSize: 20,
-      marginTop: 30,
+      marginTop: 15,
       marginBottom: 10,
       borderRadius: 10,
       color: '#fff',
@@ -133,6 +144,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       fontSize: 30,
       color: 'white',
+      marginTop: 5,
     }
   });
 
