@@ -4,10 +4,10 @@ import {Text, View, Image, StyleSheet, AsyncStorage, ImageBackground,} from 'rea
 class Profile extends Component {
 
     static navigationOptions = {
-        tabBarIcon: () => (
+      tabBarIcon: () => (
           <Image
             source={require('../assets/img/iconePerfil.png')}
-            style={styles.IconePessoa}
+            style={styles.MenuNavegacao}
           />
         )
       }
@@ -37,7 +37,7 @@ class Profile extends Component {
         return (
           <ImageBackground source={require('../assets/img/fundomobiletres.jpg')} style={{width: '100%', height: '100%', backgroundColor: 'rgba(0, 0, 0, 0.2'}}>
             <View>
-              <Text style={styles.aporradoitem}>{this.state.token}</Text>
+              <Text style={styles.item}>{this.state.token}</Text>
             </View>
           </ImageBackground>
         );
@@ -45,8 +45,16 @@ class Profile extends Component {
 }
 
   const styles = StyleSheet.create({
-    IconePessoa: { width: 35, height: 35, tintColor: 'white' },
-    aporradoitem: {fontSize: 20, color: '#FFF'}
+    MenuNavegacao: { 
+      width: 35,
+      height: 35,
+      tintColor: 'white',
+    },
+
+    item: {
+      fontSize: 20,
+      color: '#FFF',
+    },
   
   });
     

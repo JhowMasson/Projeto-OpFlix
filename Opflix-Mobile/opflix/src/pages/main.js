@@ -9,7 +9,7 @@ class Main extends Component {
     tabBarIcon: () => (
       <Image
         source={require('../assets/img/pipocaIcone.png')}
-        style={styles.tabBarNavigatorIcon}
+        style={styles.MenuNavegacao}
       />
     )
   }
@@ -47,22 +47,23 @@ class Main extends Component {
           <ImageBackground source={require('../assets/img/FundoMobile2.png')} style={{width: '100%', height: '100%',  opacity: 0.88 }}>
 
       <View style={styles.fundoDaTela}>
+        <Text style={styles.TituloPagina}>Principais Lançamentos</Text>
         <FlatList data={this.state.lancamentos}
           keyExtractor={item => item.idLancamento}
           renderItem={({item}) => (
-            <View>
+            <View style={styles.listaDadosFilme}>
+
             <Text style={styles.listaFilmes}>{item.nome}</Text>
             
-            <Text style={styles.dadosListaFilmes}>{item.sinopse}</Text>
+            <Text style={styles.TituloSecao}>Sinopse:</Text><Text style={styles.dadosListaFilmes}>{item.sinopse}</Text>
 
-            <Text style={styles.dadosListaFilmes}>{item.idGenero}</Text>
+            <Text style={styles.TituloSecao}>Genero:</Text><Text style={styles.dadosListaFilmes}>{item.idGeneroNavigation.nome}</Text>
 
-            <Text style={styles.dadosListaFilmes}>
-            {item.idTipoMetragem}</Text>            
+            <Text style={styles.TituloSecao}>Tipo Metragem:</Text><Text style={styles.dadosListaFilmes}>{item.idTipoMetragemNavigation.nome}</Text>            
 
-            <Text style={styles.dadosListaFilmes}>{item.tempoDuracao}</Text>
+            <Text style={styles.TituloSecao}>Tempo de Duração:</Text><Text style={styles.dadosListaFilmes}>{item.tempoDuracao}</Text>
             
-            <Text style={styles.dadosListaFilmes}>{item.dataLancamento}</Text>
+            <Text style={styles.TituloSecao}>Data de Lancamento:</Text><Text style={styles.dadosListaFilmes}>{item.dataLancamento}</Text>
             
             </View>          
           )}
@@ -73,22 +74,38 @@ class Main extends Component {
   }
 }
 const styles = StyleSheet.create({
-  tabBarNavigatorIcon: { width: 35, height: 35, tintColor: 'white' },
+  MenuNavegacao: { width: 35, height: 35, tintColor: 'white' },
 
   fundoDaTela:{
     backgroundColor: Colors.black,
 },
-
+TituloPagina:{
+  fontSize: 25,
+  color: 'red',
+},
 listaFilmes:{
-    color: '#fff',
-    borderBottomColor: 'red',
-    borderBottomWidth: 1,
-    margin: 10,
-    paddingBottom: 2,
+  flex: 1,
+  justifyContent: 'space-between',
+  fontSize: 17,
+  color: '#fff',
+  borderBottomColor: 'red',
+  borderBottomWidth: 1,
+  margin: 10,
+  paddingBottom: 0,
 },
-dadosListaFilmes:{
-    color: '#fff',
+listaDadosFilme:{
+  width: 408,
+  // height: 330,
+  marginTop: 5,
+  marginBottom: 80,
 },
+  dadosListaFilmes:{
+  color: '#fff',
+},
+TituloSecao:{
+fontSize:13,
+color:'red',
+}
 
 });
 
