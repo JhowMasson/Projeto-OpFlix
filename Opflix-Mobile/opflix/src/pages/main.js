@@ -46,7 +46,12 @@ class Main extends Component {
         return (
           <ImageBackground source={require('../assets/img/FundoMobile2.png')} style={{width: '100%', height: '100%',  opacity: 0.88 }}>
 
+
       <View style={styles.fundoDaTela}>
+      <View>
+      <Image source={require('../assets/img/imagem-opflix.png')}style={styles.imgOpflix}/>
+      </View>
+
         <Text style={styles.TituloPagina}>Principais Lançamentos</Text>
         <FlatList data={this.state.lancamentos}
           keyExtractor={item => item.idLancamento}
@@ -78,15 +83,26 @@ const styles = StyleSheet.create({
 
   fundoDaTela:{
     backgroundColor: Colors.black,
+    height: '100%',
+
 },
 TituloPagina:{
-  fontSize: 25,
   color: 'red',
+  textAlign: 'center',
+  fontSize: 20,
+  marginTop: 0,
 },
+imgOpflix: {
+  width: 280,
+  height: 130,
+  marginTop: 30,
+  marginLeft: 64,     
+},
+
 listaFilmes:{
   flex: 1,
   justifyContent: 'space-between',
-  fontSize: 17,
+  fontSize: 20,
   color: '#fff',
   borderBottomColor: 'red',
   borderBottomWidth: 1,
@@ -95,15 +111,14 @@ listaFilmes:{
 },
 listaDadosFilme:{
   width: 408,
-  // height: 330,
-  marginTop: 5,
-  marginBottom: 80,
+  marginTop: 10,
+  marginBottom: 32,
 },
   dadosListaFilmes:{
   color: '#fff',
 },
 TituloSecao:{
-fontSize:13,
+fontSize:15,
 color:'red',
 }
 

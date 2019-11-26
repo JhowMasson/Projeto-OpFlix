@@ -1,4 +1,5 @@
-﻿using Senai.OpFlix.WebApi.Domains;
+﻿using Microsoft.EntityFrameworkCore;
+using Senai.OpFlix.WebApi.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Senai.OpFlix.WebApi.Repositories
             using (OpFlixContext ctx = new OpFlixContext())
             {
                 // LISTA TODOS OS LANCAMENTOS (SELECT * FROM LANCAMENTOS)
-                return ctx.Lancamento.ToList();
+                return ctx.Lancamento.Include(x => x.IdGeneroNavigation).Include(x => x.IdTipoMetragemNavigation).ToList(); //, x => x.idTipoMetragem
             }
         }
 
