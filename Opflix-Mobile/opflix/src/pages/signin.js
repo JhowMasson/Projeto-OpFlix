@@ -57,6 +57,8 @@ class SignIn extends Component {
         }
     };
 
+    
+
     render() {
         return (
             <ImageBackground source={require('../assets/img/got.jpg')} style={{width: '100%', height: '100%', opacity: 1}}>
@@ -75,6 +77,7 @@ class SignIn extends Component {
                 />
             <TextInput style={styles.textInput}
             placeholder="senha"
+            secureTextEntry={true}
             onChangeText={senha => this.setState({senha})}
             value={this.state.senha}
             />
@@ -83,6 +86,7 @@ class SignIn extends Component {
             </TouchableOpacity>
                 <Text style={styles.Ow}>Ou</Text>
                 <Text style={styles.botaoCadastrese}>Cadastre-se</Text>
+
             </View>
             </ImageBackground>
         );

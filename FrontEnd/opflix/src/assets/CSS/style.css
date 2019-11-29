@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.banner{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image : linear-gradient(rgb(100, 70, 80), rgba(250, 190, 100, 0.1)), url("../img/banner1.jpg");
+    /* background-image: url("../OpFlix-sprint-3/img/banner1.jpg"); */
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.9;
+}
+
+#opfliximg {
+    width: 27em;
+    height: 12em;
+}
+
+#cadastro{
+    color: #ffffff;
+    font-size: 1.1em;
+    list-style-type: none;
+    text-shadow: 5px 3px 2px rgb(0, 0, 0);
+}
+
+#login-usuario{ 
+    color: #ffffff;
+    font-size: 1.1em;
+    list-style-type: none;
+    text-shadow: 5px 3px 2px rgb(0, 0, 0);
+}
+
+#menu1{
+    padding: 0.25em;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #e23d3d;
+    font-weight: 600;
+    font-family: 'Arial Narrow';
+    
+}
+
+ul > li {
+    list-style-type: none;
+    margin-right: 5em;
+}
+
+#cabecalhoPrincipal-nav{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 2.5em;
+    height: 10%;
+    background-color: #e23d3d;
+    font-family: 'Arial Narrow';
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 5px 3px 2px rgb(0, 0, 0);
+}
+
+.menu-design{
+    color: #ffffff;
+}
+
+a{
+    text-decoration: none; 
+}
+
+.menu-nav{
+background-color: rgb(181, 167, 167);
+}
+
+.fundo-tela{
+height: 96vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background-image : linear-gradient(rgb(100, 70, 80), rgba(250, 190, 100, 0.1)), url("../img/FundoDeTela.jpg");
+/* background-image: url("../OpFlix-sprint-3/img/banner1.jpg"); */
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+opacity: 0.9;
+}
+
+#tabela-lista {
+text-align: left;
+width: 90%;
+white-space: nowrap;
+color: white;
+background-color: black;
+}
+
+#tabela-lista td,
+#tabela-lista th {
+border: 1px solid #f6f6f6;
+padding: 8px;
+}
+
+#tabela-lista th {
+/* padding-top: 12px; */
+padding-bottom: 12px;
+text-align: center;
+background-color: #e23d3d;
+color: white;
+}
+
+#titulo-section {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: gold;
+}
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    padding: 3em;
+    color: gold;
+}
+
+p{
+    font-size: 1.7em;
+    font-family: cursive;
+    color: white;
+}
+
+#o-que-fazemos{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-image : linear-gradient(rgb(100, 70, 80), rgba(250, 190, 100, 0.1)), url("../img/FundoDeTela2.jpg");
+    /* background-image: url("../OpFlix-sprint-3/img/banner1.jpg"); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.9;   
+}
+
+#quem-somos{
+    height: 68vh;
+    display: flex;
+    justify-content: center;
+    background-image : linear-gradient(rgb(88, 60, 64), rgba(250, 190, 100, 0.1)), url("../img/FundoDeTela3.jpg");
+    /* background-image: url("../OpFlix-sprint-3/img/banner1.jpg"); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.9;
+}
+
+h3{
+    font-size: 2.5em;
+    padding: 3em;
+    color: gold;
+    margin-bottom: -1em;
+}
+
+#texto-quem-somos{
+    color: white;
+    font-size: 1.7em;
+}
+
+.tabela{
+    /* font-weight: lighter; */
+    /* border-collapse: collapse; */
+    /* text-align: left; */
+    /* table-layout: fixed; */
+    width: 55%;
+    /* white-space: nowrap; */
+    font-size: 16px; 
+}

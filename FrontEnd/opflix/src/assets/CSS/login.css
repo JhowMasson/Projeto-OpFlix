@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+  
+  .item-login{
+  display: inherit;
+  text-align: center;
+}
+
+#introducao-login{
+  margin-bottom: -2em;
+  padding: 4em;
+  color: gold;
+}
+
+.item{
+  display: flex;
+  justify-content: center;
+}
+
+.login-usuario{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image : linear-gradient(rgb(100, 70, 80), rgba(250, 190, 100, 0.1)), url("../img/FundoDeTela4.jpg");
+  /* background-image: url("../OpFlix-sprint-3/img/banner1.jpg"); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.9;
+  }
+
+  #estilo-login{
+    display:unset;
+  }
+
+  #login-img{
+    width: 27em;
+    height: 12em;
+    margin-top: -4em;
+  }
+  .item-login input{
+  width: 25em;
+  height: 2em;
+}
+
+.btn_login {
+  width: 6em;
+  height: 2em;
+  /* display: flex; */
+  margin-left: 27em;
+  margin-top: 2.5em;
+}
