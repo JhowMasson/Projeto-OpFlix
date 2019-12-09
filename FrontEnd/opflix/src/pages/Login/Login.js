@@ -41,7 +41,7 @@ class Login extends Component{
                 }
             })
             .catch(erro => {
-                this.setState({ erro: "*Usuário ou senha estão inválidos*"});
+                this.setState({ erro: "Usuário ou senha estão inválidos"});
                 console.log(erro);
             });
     }

@@ -61,7 +61,7 @@ function App() {
         <div>
         <h2>O Que Fazemos?</h2>
 
-        <p>A empresa OpFlix, tem como papel principal informar os mais novos<br/>lancamentos de filmes e séries que estão acontecendo e que<br/>vão acontecer. Para isso, fique atento ao nosso site para não perder<br/> nenhum detalhe sobre os próximos sucessos do cinema.<br/> Mais em breve iremos disponibilizar nossos serviços na Play Store <br/>e também na App Store. Fique Ligado !!</p>
+        <p>A empresa OpFlix tem como papel principal informar os mais novos<br/>lancamentos de filmes e séries que estão acontecendo e que<br/>vão acontecer. Para isso, fique atento ao nosso site para não perder<br/> nenhum detalhe sobre os próximos sucessos do cinema.<br/> Em breve, iremos disponibilizar nossos serviços na Play Store <br/>e App Store. Fique Ligado !!</p>
         </div>
       </section>
     
@@ -70,7 +70,7 @@ function App() {
         <h3>Quem Somos?</h3>
 
         <p id= "texto-quem-somos">
-          Nós da empresa OpFlix, fomos criados em 1885 com o proprósito de <br/>informar as pessoas sobre os principais lancamentos de séries e filmes. 
+          Nós, da empresa OpFlix, fomos criados em 1885 com o propósito de <br/>informar as pessoas sobre os principais lancamentos de séries e filmes. 
         </p>
       </div>
 

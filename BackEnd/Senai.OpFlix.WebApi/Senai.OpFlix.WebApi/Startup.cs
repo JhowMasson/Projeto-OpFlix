@@ -24,6 +24,11 @@ namespace Senai.OpFlix.WebApi
                 })
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "OpFlix API", Version = "v1" });
+            });
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = "JwtBearer";
@@ -48,11 +53,15 @@ namespace Senai.OpFlix.WebApi
                 };
             });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "OpFlix API", Version = "v1" });
-            });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -70,6 +79,7 @@ namespace Senai.OpFlix.WebApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "OPFLIX API V1");
             });
+            app.UseCors("CorsPolicy");
             app.UseMvc();
         }
     }

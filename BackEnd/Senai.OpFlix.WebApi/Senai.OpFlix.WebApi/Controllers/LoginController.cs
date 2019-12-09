@@ -28,8 +28,9 @@ namespace Senai.OpFlix.WebApi.Controllers
             {
                 UsuarioDomain Usuario = UsuarioRepository.BuscarPorEmailESenha(login);
                 if (Usuario == null)
-                    return NotFound(new { mensagem = "Email e senha inválidos." });
-
+                { 
+                    return NotFound(new { mensagem = "Email ou senha inválidos." });
+                }
                 // SÃO AS INFORMAÇÕES DO USUARIO
                 var claims = new[]
                 {
@@ -52,7 +53,7 @@ namespace Senai.OpFlix.WebApi.Controllers
                     issuer: "OpFlix.WebApi",
                     audience: "OpFlix.WebApi",
                     // ESSA É A DATA DE EXPIRAÇÃO
-                    claims: claims, expires: DateTime.Now.AddDays(30),
+                    claims: claims, expires: DateTime.Now.AddMinutes(30),
                     // ESSA É A CHAVE
                     signingCredentials: creds);
 

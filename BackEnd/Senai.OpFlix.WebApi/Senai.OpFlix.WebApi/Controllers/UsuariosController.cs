@@ -33,19 +33,14 @@ namespace Senai.OpFlix.WebApi.Controllers
         // O POST SERVE PARA CADASTRAR UM NOVO ITEM 
         public IActionResult Cadastrar(UsuarioDomain usuario)
         {
-            try
+            if (usuario.IdTipoUsuario == 2)
             {
-                if(usuario.IdTipoUsuario == 1)
-                {
-                    return BadRequest(new { mensagem = "Erro: Usuário comum não pode cadastrar um Administrador"});
-                }
                 UsuarioRepository.Cadastrar(usuario);
                 return Ok();
-            }               
-            
-            catch (Exception ex)
+            }
+            else
             {
-                return BadRequest(new { mensagem = "Erro: " + ex.Message });
+                return BadRequest(new { mensagem = "Você não possui a autorização necessária para cadastrar este tipo de usuário." });
             }
         }
 
