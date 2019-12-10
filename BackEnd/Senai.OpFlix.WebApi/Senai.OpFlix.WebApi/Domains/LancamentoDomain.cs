@@ -7,9 +7,9 @@ namespace Senai.OpFlix.WebApi.Domains
     {
         public int IdLancamento { get; set; }
         public string Nome { get; set; }
+        public string Sinopse { get; set; }
         public TimeSpan? TempoDuracao { get; set; }
         public DateTime? DataLancamento { get; set; }
-        public string Sinopse { get; set; }
         public int? IdGenero { get; set; }
         public int? IdTipoMetragem { get; set; }
 

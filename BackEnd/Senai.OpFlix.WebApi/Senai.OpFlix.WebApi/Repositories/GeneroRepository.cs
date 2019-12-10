@@ -1,4 +1,5 @@
 ﻿using Senai.OpFlix.WebApi.Domains;
+using Senai.OpFlix.WebApi.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -7,17 +8,8 @@ using System.Threading.Tasks;
 
 namespace Senai.OpFlix.WebApi.Repositories
 {
-    public class GeneroRepository
+    public class GeneroRepository : IGeneroRepository
     {
-
-        public List<GeneroDomain> Listar()
-        {
-            using(OpFlixContext ctx = new OpFlixContext())
-            {
-                // LISTA TODOS OS GENEROS (SELECT * FROM GENEROS)
-                return ctx.Genero.ToList();
-            }
-        }
 
         //SERVE PARA CADASTRAR NOVOS GENEROS
         public void Cadastrar(GeneroDomain genero)
@@ -27,6 +19,15 @@ namespace Senai.OpFlix.WebApi.Repositories
                 // CRIA A TABELA "Genero" (INSERT INTO)
                 ctx.Genero.Add(genero);
                 ctx.SaveChanges();
+            }
+        }
+
+        public List<GeneroDomain> Listar()
+        {
+            using(OpFlixContext ctx = new OpFlixContext())
+            {
+                // LISTA TODOS OS GENEROS (SELECT * FROM GENEROS)
+                return ctx.Genero.ToList();
             }
         }
 
@@ -52,16 +53,6 @@ namespace Senai.OpFlix.WebApi.Repositories
             }
         }
 
-        //SERVE PARA DELETAR UM GENERO
-        public void Deletar(int id)
-        {
-            using (OpFlixContext ctx = new OpFlixContext())
-            {
-                GeneroDomain Genero = ctx.Genero.Find(id);
-                ctx.Genero.Remove(Genero);
-                ctx.SaveChanges();
-            }
-        }
 
     }
 }

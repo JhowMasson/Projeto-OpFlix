@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Senai.OpFlix.WebApi.Domains;
+using Senai.OpFlix.WebApi.Interfaces;
 using Senai.OpFlix.WebApi.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,21 +9,14 @@ using System.Threading.Tasks;
 
 namespace Senai.OpFlix.WebApi.Repositories
 {
-    public class UsuarioRepository
+    public class UsuarioRepository : IUsuarioRepository
     {
-        /// <summary>
-        /// Lista os Usuarios
-        /// </summary>
-        /// <returns></returns>
-        public List<UsuarioDomain> Listar()
-        {
-            using (OpFlixContext ctx = new OpFlixContext())
-            {
-                // LISTA TODOS OS USUARIOS
-                return ctx.Usuario.ToList();
-            }
-        }
 
+        /// <summary>
+        /// Cadastrar usuarios
+        /// </summary>
+        /// <param name="usuario"></param>
+        // SERVE PARA CADASTRAR UM NOVO USUARIO
         public void Cadastrar(UsuarioDomain usuario)
         {
             using (OpFlixContext ctx = new OpFlixContext())
@@ -32,7 +26,33 @@ namespace Senai.OpFlix.WebApi.Repositories
             }
         }
 
-        public void CadastrarAdmin(UsuarioDomain usuario)
+
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        // IRÁ BUSCAR O USUARIO PELO SEU EMAIL E SUA SENHA
+        public UsuarioDomain BuscarPorEmailESenha(LoginVIewModel login)
+        {
+            using (OpFlixContext ctx = new OpFlixContext())
+            {
+                // IRÁ BUSCAR OS DADOS RECEBIDOS E VER SE O EMAIL E A SENHA SÃO IGUAIS
+                UsuarioDomain usuario = ctx.Usuario.Include(x => x.IdTipoUsuarioNavigation).FirstOrDefault(x => x.Email == login.Email && x.Senha == login.Senha);
+                if (usuario == null)
+                {
+                    return null;
+                }
+                return usuario;
+            }
+        }
+
+        /// <summary>
+        /// Cadastra um novo ADM
+        /// </summary>
+        /// <param name="usuario"></param>
+        //SERVE PARA CADASTRAR UM NOVO ADMINISTRADOR
+        public void CadastarADM(UsuarioDomain usuario)
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
@@ -41,56 +61,12 @@ namespace Senai.OpFlix.WebApi.Repositories
             }
         }
 
-        // BUSCA OS USUARIOS PELO ID 
-        public UsuarioDomain BuscarPorId(int id)
+        public List<UsuarioDomain> ListarUsuario()
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
-                return ctx.Usuario.FirstOrDefault(x => x.IdUsuario == id);
-            }
-
-        }
-
-        // SERVE PARA ALTERAR/ATUALIZAR UM USUARIO
-        public void Alterar(UsuarioDomain usuario)
-        {
-            using (OpFlixContext ctx = new OpFlixContext())
-            {
-                UsuarioDomain UsuarioPesquisado = ctx.Usuario.FirstOrDefault(x => x.IdUsuario == usuario.IdUsuario);
-                UsuarioPesquisado.Nome = usuario.Nome;
-                UsuarioPesquisado.Senha = usuario.Senha;
-                UsuarioPesquisado.Email = usuario.Email;
-                ctx.Usuario.Update(UsuarioPesquisado);
-                ctx.SaveChanges();
-            }
-
-        }
-
-        // IRÁ BUSCAR O USUARIO PELO SEU EMAIL E SUA SENHA
-        public UsuarioDomain BuscarPorEmailESenha(LoginViewModel login)
-        {
-            using (OpFlixContext ctx = new OpFlixContext())
-            {
-                // IRÁ BUSCAR OS DADOS RECEBIDOS E VER SE O EMAIL E A SENHA SÃO IGUAIS
-                UsuarioDomain UsuarioBuscado = ctx.Usuario.Include(x => x.IdTipoUsuarioNavigation).FirstOrDefault(x => x.Email == login.Email && x.Senha == login.Senha);
-                if (UsuarioBuscado == null)
-                {
-                    return null;
-                }
-                return UsuarioBuscado;
+                return ctx.Usuario.Include(x => x.IdTipoUsuarioNavigation).ToList();
             }
         }
-
-        // SERVE PARA DELETAR UM USUARIO
-        public void Deletar(int id)
-        {
-            using (OpFlixContext ctx = new OpFlixContext())
-            {
-                UsuarioDomain Usuario = ctx.Usuario.Find(id);
-                ctx.Usuario.Remove(Usuario);
-                ctx.SaveChanges();
-            }
-        }
-
     }
 }

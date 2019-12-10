@@ -10,6 +10,7 @@ namespace Senai.OpFlix.WebApi.ViewModels
     {
         [Required]
         public string Email { get; set; }
+        [StringLength(250, MinimumLength = 4)]
         public string Senha { get; set; }
     }
 }

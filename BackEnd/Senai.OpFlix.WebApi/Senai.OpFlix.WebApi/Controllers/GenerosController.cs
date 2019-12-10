@@ -17,6 +17,23 @@ namespace Senai.OpFlix.WebApi.Controllers
     {
         GeneroRepository GeneroRepository = new GeneroRepository();
 
+        [Authorize(Roles = "Administrador")]
+        [HttpPost]
+        // O POST SERVE PARA CADASTRAR UM NOVO ITEM 
+        public IActionResult Cadastrar(GeneroDomain genero)
+        {
+            try
+            {
+                GeneroRepository.Cadastrar(genero);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { mensagem = "Erro:" + ex.Message });
+            }
+        }
+
+        [Authorize]
         [HttpGet]
         // O GET SERVE PARA LISTAR OS RESULTADOS
         public IActionResult Listar()
@@ -25,12 +42,13 @@ namespace Senai.OpFlix.WebApi.Controllers
         }
 
         [Authorize(Roles = "Administrador")]
-        [HttpPost]
-        // O POST SERVE PARA CADASTRAR UM NOVO ITEM 
-        public IActionResult Cadastrar(GeneroDomain genero)
+        [HttpGet("{id}")]
+        public IActionResult BuscarPorId(int id)
         {
-            GeneroRepository.Cadastrar(genero);
-            return Ok();
+            GeneroDomain Genero = GeneroRepository.BuscarPorId(id);
+            if (Genero == null)
+                return NotFound();
+            return Ok(Genero);
         }
 
         [Authorize(Roles = "Administrador")]
@@ -38,20 +56,23 @@ namespace Senai.OpFlix.WebApi.Controllers
         // O PUT SERVE PARA ALTERAR/ATUALIZAR UM NOVO ITEM
         public IActionResult Alterar(GeneroDomain genero)
         {
-            GeneroDomain generoBuscado = GeneroRepository.BuscarPorId(genero.IdGenero);
-            if (generoBuscado == null)
-                return NotFound();
-            GeneroRepository.Alterar(genero);
-            return Ok();
+            try
+            {
+                GeneroDomain generoBuscado = GeneroRepository.BuscarPorId(genero.IdGenero);
+            
+                if (generoBuscado == null)
+                { 
+                    return NotFound();
+                }
+                GeneroRepository.Alterar(genero);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { mensagem = "Erro" });
+            }
         }
 
-        [Authorize(Roles = "Administrador")]
-        [HttpDelete("{id}")]
-        // O DELETE SERVE PARA DELETAR UM ITEM 
-        public IActionResult Deletar(int id)
-        {
-            GeneroRepository.Deletar(id);
-            return Ok();
-        }
+
     }
 }

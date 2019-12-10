@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Senai.OpFlix.WebApi.Domains;
+using Senai.OpFlix.WebApi.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +9,19 @@ using System.Threading.Tasks;
 
 namespace Senai.OpFlix.WebApi.Repositories
 {
-    public class LancamentoRepository
+    public class LancamentoRepository : ILancamentoRepository
     {
+        // CADASTRA NOVOS LANCAMENTOS
+        public void Cadastrar(LancamentoDomain lancamento)
+        {
+            using (OpFlixContext ctx = new OpFlixContext())
+            {
+                // CRIA A TABELA "Lancamento" (INSERT INTO)
+                ctx.Lancamento.Add(lancamento);
+                ctx.SaveChanges();
+            }
+        }
+
         public List<LancamentoDomain> Listar()
         {
             using (OpFlixContext ctx = new OpFlixContext())
@@ -18,13 +31,13 @@ namespace Senai.OpFlix.WebApi.Repositories
             }
         }
 
-        // CADASTRA NOVOS LANCAMENTOS
-        public void Cadastrar(LancamentoDomain lancamento)
+        // SERVE PARA DELETAR UM LANCAMENTO
+        public void Deletar(int id)
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
-                // CRIA A TABELA "Lancamento" (INSERT INTO)
-                ctx.Lancamento.Add(lancamento);
+                LancamentoDomain Lancamento = ctx.Lancamento.Find(id);
+                ctx.Lancamento.Remove(Lancamento);
                 ctx.SaveChanges();
             }
         }
@@ -49,19 +62,17 @@ namespace Senai.OpFlix.WebApi.Repositories
                 LancamentoPesquisado.Sinopse = lancamento.Sinopse;
                 LancamentoPesquisado.TempoDuracao = lancamento.TempoDuracao;
                 LancamentoPesquisado.DataLancamento = lancamento.DataLancamento;
+                LancamentoPesquisado.IdGenero = lancamento.IdGenero;
                 ctx.Lancamento.Update(LancamentoPesquisado);
                 ctx.SaveChanges();
             }
         }
-
-        // SERVE PARA DELETAR UM LANCAMENTO
-        public void Deletar(int id)
+     
+        public List<LancamentoDomain> BuscarLancamentoPorGenero(int idGenero)
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
-                LancamentoDomain Lancamento = ctx.Lancamento.Find(id);
-                ctx.Lancamento.Remove(Lancamento);
-                ctx.SaveChanges();
+                return ctx.Lancamento.Where(x => x.IdGenero == idGenero).ToList();
             }
         }
 

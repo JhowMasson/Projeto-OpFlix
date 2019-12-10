@@ -17,13 +17,6 @@ namespace Senai.OpFlix.WebApi.Controllers
     {
         UsuarioRepository UsuarioRepository = new UsuarioRepository();
 
-        [Authorize(Roles = "Administrador")]
-        [HttpGet]
-        // O GET SERVE PARA LISTAR OS RESULTADOS
-        public IActionResult Listar()
-        {
-            return Ok(UsuarioRepository.Listar());
-        }
         /// <summary>
         /// VAI SERVIR PARA CRIAR UM MÉTODO ONDE APENAS O ADMINISTRADOR PODERÁ CADASTRAR OUTRO ADMINISTRADOR
         /// </summary>
@@ -33,36 +26,28 @@ namespace Senai.OpFlix.WebApi.Controllers
         // O POST SERVE PARA CADASTRAR UM NOVO ITEM 
         public IActionResult Cadastrar(UsuarioDomain usuario)
         {
-            if (usuario.IdTipoUsuario == 2)
+            try
             {
-                UsuarioRepository.Cadastrar(usuario);
-                return Ok();
+                if (usuario.IdTipoUsuario == 2)
+                {
+                    return BadRequest(new { mensagem = "Erro: Você não possui a autorização necessária para cadastrar este tipo de usuário." });
+                }
+                    UsuarioRepository.Cadastrar(usuario);
+                    return Ok();
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest(new { mensagem = "Você não possui a autorização necessária para cadastrar este tipo de usuário." });
+                return BadRequest(new { mensagem = "Erro: " + ex.Message });
             }
         }
 
         [Authorize(Roles = "Administrador")]
-        [HttpPut]
-        // O PUT SERVE PARA ALTERAR/ATUALIZAR UM NOVO ITEM
-        public IActionResult Alterar(UsuarioDomain usuario)
+        [HttpGet]
+        // O GET SERVE PARA LISTAR OS RESULTADOS
+        public IActionResult Listar()
         {
-            UsuarioDomain usuarioBuscado = UsuarioRepository.BuscarPorId(usuario.IdUsuario);
-            if (usuarioBuscado == null)
-                return NotFound();
-            UsuarioRepository.Alterar(usuario);
-            return Ok();
+            return Ok(UsuarioRepository.Listar());
         }
-
-        [Authorize(Roles = "Administrador")]
-        [HttpDelete("{id}")]
-        // O DELETE SERVE PARA DELETAR UM ITEM 
-        public IActionResult Deletar(int id)
-        {
-            UsuarioRepository.Deletar(id);
-            return Ok();
-        }       
+        
     }
 }

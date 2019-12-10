@@ -53,5 +53,19 @@ namespace Senai.OpFlix.WebApi.Controllers
             LancamentoRepository.Deletar(id);
             return Ok();
         }
+
+        [Authorize]
+        [HttpGet("BuscarPorGenero{idGenero}")]
+        public IActionResult BuscarPorGenero(int idGenero)
+        {
+            try
+            {
+                return Ok(LancamentoRepository.BuscarLancamentoPorGenero(idGenero));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { mensagem = "Erro:" + ex.Message });
+            }
+        }
     }
 }
