@@ -1,4 +1,5 @@
 ﻿using Senai.OpFlix.WebApi.Domains;
+using Senai.OpFlix.WebApi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Senai.OpFlix.WebApi.Interfaces
 {
     public interface IUsuarioRepository
     {
-        UsuarioDomain BuscarPorEmailESenha(LoginVIewModel login);
+        UsuarioDomain BuscarPorEmailESenha(LoginViewModel login);
 
         void CadastarADM(UsuarioDomain usuario);
 

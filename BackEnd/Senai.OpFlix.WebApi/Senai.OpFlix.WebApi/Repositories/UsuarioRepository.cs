@@ -13,27 +13,14 @@ namespace Senai.OpFlix.WebApi.Repositories
     {
 
         /// <summary>
-        /// Cadastrar usuarios
-        /// </summary>
-        /// <param name="usuario"></param>
-        // SERVE PARA CADASTRAR UM NOVO USUARIO
-        public void Cadastrar(UsuarioDomain usuario)
-        {
-            using (OpFlixContext ctx = new OpFlixContext())
-            {
-                ctx.Usuario.Add(usuario);
-                ctx.SaveChanges();
-            }
-        }
-
-
-        /// <summary>
         /// Login
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
         // IRÁ BUSCAR O USUARIO PELO SEU EMAIL E SUA SENHA
-        public UsuarioDomain BuscarPorEmailESenha(LoginVIewModel login)
+ 
+
+        public UsuarioDomain BuscarPorEmailESenha(LoginViewModel login)
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
@@ -46,6 +33,8 @@ namespace Senai.OpFlix.WebApi.Repositories
                 return usuario;
             }
         }
+
+
 
         /// <summary>
         /// Cadastra um novo ADM
@@ -61,6 +50,21 @@ namespace Senai.OpFlix.WebApi.Repositories
             }
         }
 
+        /// <summary>
+        /// Cadastrar usuarios
+        /// </summary>
+        /// <param name="usuario"></param>
+        // SERVE PARA CADASTRAR UM NOVO USUARIO
+        public void Cadastrar(UsuarioDomain usuario)
+        {
+            using (OpFlixContext ctx = new OpFlixContext())
+            {
+                ctx.Usuario.Add(usuario);
+                ctx.SaveChanges();
+            }
+        }
+
+
         public List<UsuarioDomain> ListarUsuario()
         {
             using (OpFlixContext ctx = new OpFlixContext())
@@ -68,5 +72,7 @@ namespace Senai.OpFlix.WebApi.Repositories
                 return ctx.Usuario.Include(x => x.IdTipoUsuarioNavigation).ToList();
             }
         }
+
+
     }
 }

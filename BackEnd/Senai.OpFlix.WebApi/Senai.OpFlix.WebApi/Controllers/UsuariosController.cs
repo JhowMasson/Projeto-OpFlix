@@ -46,7 +46,7 @@ namespace Senai.OpFlix.WebApi.Controllers
         // O GET SERVE PARA LISTAR OS RESULTADOS
         public IActionResult Listar()
         {
-            return Ok(UsuarioRepository.Listar());
+            return Ok(UsuarioRepository.ListarUsuario());
         }
         
     }
