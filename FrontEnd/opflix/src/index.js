@@ -7,6 +7,7 @@ import './index.css';
 import App from './pages/Home/App';
 import Login from './pages/Login/Login';
 import Lancamento from './pages/Lancamentos/Lancamentos';
+import  Mapa from './pages/Mapa/mapa';
 
 
 import * as serviceWorker from './serviceWorker';
@@ -37,6 +38,7 @@ const routing = (
                 <Route exact path='/' component={App} />
                 <Route path='/login' component={Login}/>
                 <RotaPrivada path='/lancamentos' component={Lancamento}/>
+                <Route path='/mapa' component={Mapa}/>
 
             </Switch>
         </div>

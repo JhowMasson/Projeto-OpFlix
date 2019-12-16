@@ -4,6 +4,8 @@ import logo from '../../assets/img/imagem-opflix.png';
 
 import Rodape from '../../components/Rodape/Rodape';
 
+import {Link} from 'react-router-dom';
+
 class Lancamento extends Component{
 
     constructor(){
@@ -97,6 +99,12 @@ render(){
                     })}
                 </tbody>
             </table> 
+
+            <div>
+                <p>
+                <Link to="/mapa">Mapa</Link>
+                </p>
+            </div>
 
             <Rodape />
         </div>
